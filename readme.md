@@ -18,8 +18,8 @@ Follow these steps to set up the project environment.
 
 First, clone this repository to your local machine and navigate into the project directory:
 
-git clone \[https://github.com/sheikh989/Anomaly\_detection.git\](https://github.com/sheikh989/Anomaly\_detection.git)  
-cd Anomaly\_detection
+git clone https://github.com/sheikh989/Anomaly_detection.git
+cd Anomaly_detection
 
 ### **2\. Download the Pretrained Model**
 
