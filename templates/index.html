@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Anomaly Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <main class="main-content">
+            <div class="header">
+                <h1>Anomaly Detection Dashboard</h1>
+                <button id="resetButton">Reset</button>
+            </div>
+
+            <div class="dashboard-grid">
+                
+                <div class="video-area">
+                    <div class="video-wrapper">
+                        <video id="videoPlayer" width="100%" controls muted>
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <p id="statusLabel">Select a video to begin.</p>
+                </div>
+                
+                <div class="results-column">
+                    <div class="chart-container">
+                        <h3>Live Anomaly Score</h3>
+                        <canvas id="anomalyChart"></canvas>
+                    </div>
+                    
+                    <div class="summary-container">
+                        <h3>Video Summary</h3>
+                        
+                        <div class="loader-container" id="summaryLoaderContainer" style="display: none;">
+                            <div class="loader"></div>
+                            <p>Summarizing 30s clip... (this may take a minute)</p>
+                        </div>
+                        
+                        <p id="summaryTextLabel">Summary will appear here after analysis...</p>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <h2>Demo Videos</h2>
+            <select id="anomalySelector" class="custom-select">
+                <option value="" disabled selected>Select a Demo Video...</option>
+                {% for name in anomaly_names %}
+                <option value="{{ name }}">{{ name }}</option>
+                {% endfor %}
+            </select>
+            
+            <hr class="separator">
+            <h2>Upload Your Own</h2>
+            <div class="upload-section">
+                <input type="file" id="videoUpload" accept="video/mp4, video/mov, video/avi">
+                <button id="uploadButton">Analyze Uploaded Video</button>
+            </div>
+            
+            <hr class="separator">
+
+            <div class="yolo-container">
+                <h3>YOLO Detection Result</h3>
+                <p id="yoloTextLabel">Waiting for anomaly...</p>
+                <img id="yoloImageFrame" src="" alt="YOLO Frame Preview">
+            </div>
+        </aside>
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
