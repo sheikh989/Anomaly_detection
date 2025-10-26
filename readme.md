@@ -62,6 +62,14 @@ With your virtual environment active, install all required packages using the re
 
 pip install \-r requirements.txt
 
+### **6\. Configure API Key**
+This project requires an OpenAI API key.
+Create a new file in the main project directory named .env
+Open the .env file and add your API key in the following format:
+OPENAI_API_KEY="your_api_key_goes_here"
+
+(Replace "your_api_key_goes_here" with your actual key.)
+
 ## **Usage**
 
 You can run the project in two different ways.
